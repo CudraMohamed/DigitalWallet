@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from locale import currency
 from django.db import models
 from django.utils import timezone
@@ -9,13 +10,17 @@ class Customer(models.Model):
     address = models.CharField(max_length=50,null=True)
     email_address = models.EmailField(max_length=25,null=True)
     phone_number= models.CharField(max_length=15,null=True)
-    gender = models.CharField(max_length=6,null=True)
+    GENDER_CHOICES=(
+        ('M','Male'),
+        ('F','Female')
+    )
+    gender = models.CharField(max_length=6,choices=GENDER_CHOICES,null=True)
     age = models.PositiveSmallIntegerField(null=True)
     id_number =models.CharField(max_length=20,null=True)
     country = models.CharField(max_length=20,null=True)
     account_type = models.CharField(max_length=20,null=True)
     registration_date = models.CharField(max_length=20,null=True)
-    profile_picture = models.CharField(max_length=20,null=True)
+    profile_picture = models.ImageField(upload_to='profile_picture/',null=True)
     nationality = models.CharField(max_length=20,null=True)
 
 class Wallet(models.Model):
@@ -45,7 +50,11 @@ class Transaction(models.Model):
     transaction_amount=models.IntegerField()
     transaction_number=models.IntegerField()
     transaction_dateTime=models.DateTimeField()
-    transaction_type=models.CharField(max_length=10,null=True)
+    TRANSACTION_CHOICE=(
+        ('withdraw','Withdrawal'),
+        ('depo','deposit')
+    )
+    transaction_type=models.CharField(max_length=10,choices=TRANSACTION_CHOICE,null=True)
     receipt=models.OneToOneField('Receipt',on_delete=models.CASCADE,related_name='transaction_receipts')
     origin_account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='transaction_origin')
     destination_account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='transaction_destination')
@@ -53,13 +62,22 @@ class Transaction(models.Model):
 class Card(models.Model):
     card_number=models.IntegerField()
     card_name=models.CharField(max_length=20,null=True)
-    card_type=models.CharField(max_length=20,null=True)
+    ISSUER_CHOICES=(
+        ('Master','Mstercard'),
+        ('Visa','Visacard')
+    )
+    card_type=models.CharField(max_length=20,choices=ISSUER_CHOICES,null=True)
     expiry_date=models.DateTimeField()
     cvv_securityCode=models.CharField(max_length=16,null=True)
     date=models.DateTimeField()
     wallet=models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='card_wallet')
     account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='card_account')
     issuer=models.CharField(max_length=20,null=True)
+    STATUS_CHOICE=(
+        ('d','debit'),
+        ('c','credit')
+    )
+    card_status=models.CharField(max_length=1,choices=STATUS_CHOICE,null=True)
 
 class ThirdParty(models.Model):
     account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='thirdparty_account')
@@ -74,7 +92,11 @@ class Notification(models.Model):
     message=models.CharField(max_length=20,null=True)
     date = models.DateTimeField()
     recipient =models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='notification_recipient')
-    status=models.CharField(max_length=20,null=True)
+    STATUS_CHOICES=(
+        ('read','read'),
+        ('unread','unread')
+    )
+    status=models.CharField(max_length=20,choices=STATUS_CHOICES,null=True)
     title=models.CharField(max_length=20,null=True)
 
 class Receipt(models.Model):
