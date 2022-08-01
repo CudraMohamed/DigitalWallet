@@ -84,7 +84,7 @@ DATABASES = {
 DATABASE = {
     'default':{
         'ENGINE': 'django.db.backends.postgres',
-        'NAME' : 'myproject',
+        'NAME' : 'walletproject',
         'USER' : 'cudra',
         'PASSWORD' : 'stude',
         'HOST': 'localhost',
