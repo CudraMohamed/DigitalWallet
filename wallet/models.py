@@ -37,7 +37,7 @@ class Transaction(models.Model):
     # wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='Transaction_wallet')
     transaction_amount=models.IntegerField()
     transaction_number=models.IntegerField()
-    transaction_dateTime=models.DateTimeField()
+    transaction_dateTime=models.DateTimeField(default=timezone.now)
     TRANSACTION_CHOICE=(
         ('withdraw','Withdrawal'),
         ('depo','deposit')
@@ -51,7 +51,7 @@ class Wallet(models.Model):
     balance = models.IntegerField()
     customer = models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='Wallet_customer')
     amount = models.IntegerField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
     # transaction= models.ForeignKey(Transaction,on_delete=models.CASCADE,related_name='wallet_transaction')
     currency = models.ForeignKey(Currency,on_delete=models.CASCADE,related_name='Wallet_currency')
     # account=models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Wallet_account')
@@ -65,9 +65,9 @@ class Card(models.Model):
         ('Visa','Visacard')
     )
     card_type=models.CharField(max_length=20,choices=ISSUER_CHOICES,null=True)
-    expiry_date=models.DateTimeField()
+    expiry_date=models.DateTimeField(default=timezone.now)
     cvv_securityCode=models.CharField(max_length=16,null=True)
-    date_issued=models.DateTimeField()
+    date_issued=models.DateTimeField(default=timezone.now)
     # wallet=models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='Card_wallet')
     account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='Card_account')
     STATUS_CHOICE=(
@@ -77,7 +77,7 @@ class Card(models.Model):
     card_status=models.CharField(max_length=1,choices=STATUS_CHOICE,null=True)
 
 class ThirdParty(models.Model):
-    account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='Thirdparty_account')
+    account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='ThirdParty_account')
     thirdparty_id=models.CharField(max_length=20,null=True)
     phone_number=models.IntegerField()
     thirdparty_amount=models.IntegerField()
@@ -87,7 +87,7 @@ class ThirdParty(models.Model):
 
 class Notification(models.Model):
     message=models.CharField(max_length=200,null=True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
     recipient =models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='Notification_recipient')
     STATUS_CHOICES=(
         ('read','read'),
@@ -98,7 +98,7 @@ class Notification(models.Model):
 
 class Receipt(models.Model):
     receipt_type=models.CharField(max_length=20,null=True)
-    receipt_date=models.DateTimeField()
+    receipt_date=models.DateTimeField(default=timezone.now)
     receipt_type=models.CharField(max_length=20,null=True)
     total_amount=models.IntegerField()
     # account=models.ForeignKey(Account,on_delete=models.CASCADE,related_name='Receipt_account')
@@ -107,7 +107,7 @@ class Receipt(models.Model):
 
 class Loan(models.Model):
     loan_number=models.IntegerField()
-    loan_type=models.CharField(max_length=25)
+    loan_type=models.CharField(max_length=25,null=True)
     interest_rate=models.IntegerField()
     date=models.DateTimeField(default=timezone.now)
     amount=models.IntegerField()
@@ -119,7 +119,7 @@ class Loan(models.Model):
 
 class Reward(models.Model):
     name=models.CharField(max_length=20,null=True)
-    date_of_reward=models.DateTimeField()
+    date_of_reward=models.DateTimeField(default=timezone.now)
     recipient_wallet=models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='Reward_receipient_wallet')
     transaction=models.ForeignKey(Transaction,on_delete=models.CASCADE,related_name='Reward_transaction')
     transfer=models.IntegerField()
