@@ -1,10 +1,20 @@
 from django.shortcuts import render
 from .forms import AccountRegistrationForm, CustomerRegistrationForm, CurrencyRegistrationForm, TransactionRegistrationForm, CardRegistrationForm,LoanRegistrationForm,NotificationRegistrationForm,ReceiptRegistrationForm,RewardRegistrationForm,ThirdpartyRegistrationForm,WalletRegistrationForm
+from .models import Customer
 
 # Create your views here.
 def register_customer(request):
-    form=CustomerRegistrationForm()
+    if request.method=="POST":
+        form=CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form=CustomerRegistrationForm()
     return render(request,"wallet/register_customer.html",{"form":form})    #the request being made #where the request is made #dict(data to go with the template)
+    
+def list_customers(request):
+    customers=Customer.objects.all()
+    return render(request,"wallet/customers_list.html",{"customers":customers})
 
 def register_currency(request):
     form=CurrencyRegistrationForm()
