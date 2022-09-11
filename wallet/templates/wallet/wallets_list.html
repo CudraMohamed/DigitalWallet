@@ -8,17 +8,16 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for wallet in wallets%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{wallet. balance}}</td>
+            <td>{{wallet.customer}}</td>
+            <td>{{wallet.amount}}</td>
+            <td>{{wallet.date}}</td>
+            <td>{{wallet.currency}}</td>
+            <td>{{wallet.pin}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->

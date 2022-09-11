@@ -8,17 +8,17 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for reward in rewards%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{reward.name}}</td>
+            <td>{{reward.date_of_reward}}</td>
+            <td>{{reward.recipient_wallet}}</td>
+            <td>{{reward.transaction}}</td>
+            <td>{{reward.transfer}}</td>
+            <td>{{reward.redeem}}</td>
+            <td>{{reward.shop}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->

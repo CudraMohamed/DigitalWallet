@@ -7,6 +7,10 @@ class CustomerRegistrationForm(forms.ModelForm):    #(ModelForm)-importing speci
     class Meta:
         model=Customer
         fields="__all__"
+        # widgets={
+        #     "gender":forms.Select(attrs={'class':"form-control"}),
+        #     "profile_picture":forms.ClearableFileInput(attrs={'class':"form-control"}),
+        # }
 
 class CurrencyRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
     class Meta:

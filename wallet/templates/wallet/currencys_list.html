@@ -8,17 +8,12 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for currency in currencys%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{currency.amount}}</td>
+            <td>{{currency.origin_country}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->

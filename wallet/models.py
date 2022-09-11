@@ -12,13 +12,13 @@ class Customer(models.Model):
         ('M','Male'),
         ('F','Female')
     )
-    gender = models.CharField(max_length=6,choices=GENDER_CHOICES,null=True)
-    age = models.PositiveSmallIntegerField(null=True)
+    gender = models.CharField(max_length=6,choices=GENDER_CHOICES)
+    age = models.PositiveSmallIntegerField()
     id_number =models.CharField(max_length=20,null=True)
     country = models.CharField(max_length=20,null=True)
     account_type = models.CharField(max_length=20,null=True)
     registration_date = models.DateTimeField(default=timezone.now)
-    profile_picture = models.ImageField(upload_to='profile_picture/',null=True)
+    profile_picture = models.ImageField(upload_to='profile_picture/')
     nationality = models.CharField(max_length=20,null=True)
 
 class Currency(models.Model):

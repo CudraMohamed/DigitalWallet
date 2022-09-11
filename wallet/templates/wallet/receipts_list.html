@@ -8,17 +8,14 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for receipt in receipts%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{receipt.receipt_type}}</td>
+            <td>{{receipt.receipt_date}}</td>
+            <td>{{receipt.total_amount}}</td>
+            <td>{{receipt.receiptFile}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->

@@ -8,17 +8,15 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for account in accounts%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{account.account_number}}</td>
+            <td>{{account.account_type}}</td>
+            <td>{{account.balance}}</td>
+            <td>{{account.name}}</td>
+            <td>{{account.wallet}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->

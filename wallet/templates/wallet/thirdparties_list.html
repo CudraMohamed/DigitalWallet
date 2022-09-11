@@ -8,17 +8,16 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
+        {%for thirdparty in thirdparties%}
         <tr>
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.age}}</td>
+            <td>{{thirdparty.account}}</td>
+            <td>{{thirdparty.thirdparty_id}}</td>
+            <td>{{thirdparty.phone_number}}</td>
+            <td>{{thirdparty.thirdparty_amount}}</td>
+            <td>{{thirdparty.thirdparty_name}}</td>
+            <td>{{thirdparty.currency}}</td>
         </tr>
         {%endfor%}
     </table>
 </body>
 </html>
-
- <!-- <td>First Name</td>
-        <td>Email</td>
-        <td>Age</td> -->
