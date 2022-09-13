@@ -18,7 +18,7 @@ class Customer(models.Model):
     country = models.CharField(max_length=20,null=True)
     account_type = models.CharField(max_length=20,null=True)
     registration_date = models.DateTimeField(default=timezone.now)
-    profile_picture = models.ImageField(upload_to='profile_picture/')
+    profile_picture = models.ImageField(upload_to='profile_picture/',blank=True)
     nationality = models.CharField(max_length=20,null=True)
 
 class Currency(models.Model):

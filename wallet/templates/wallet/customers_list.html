@@ -8,13 +8,22 @@
 </head>
 <body>
     <table style="border: solid 1px;">
-        {%for customer in customers%}
-        <tr>
+        <tr>{%for customer in customers%}</tr>
+        
             <td>{{customer.first_name}}</td>
+            <td>{{customer.address}}</td>
             <td>{{customer.email_address}}</td>
+            <td>{{customer.phone_number}}</td>
+            <td>{{customer.gender}}</td>
             <td>{{customer.age}}</td>
-        </tr>
-        {%endfor%}
+            <td>{{customer.id_number}}</td>
+            <td>{{customer.country}}</td>
+            <td>{{customer.account_type}}</td>
+            <td>{{customer.registration_date}}</td>
+            <td>{{customer.profile_picture}}</td>
+            <td>{{customer.nationality}}</td>
+            
+            {%endfor%}
     </table>
 </body>
 </html>
