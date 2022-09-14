@@ -4,27 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-    <table style="border: solid 1px;">
-        <tr>{%for customer in customers%}</tr>
+<style>
+    td{
+        background-color:rgb(34, 166, 243);
+        border:solid 1px white;
+    }
+</style>
+<body style="background-color: pink;">
+    <table class="table" style="border: solid 1px; height: 10rem;  margin-top: 10%;margin-left: 3.5%; width: 80%; position: fixed; border: 10px;">
         
-            <td>{{customer.first_name}}</td>
-            <td>{{customer.address}}</td>
-            <td>{{customer.email_address}}</td>
-            <td>{{customer.phone_number}}</td>
-            <td>{{customer.gender}}</td>
-            <td>{{customer.age}}</td>
-            <td>{{customer.id_number}}</td>
-            <td>{{customer.country}}</td>
-            <td>{{customer.account_type}}</td>
-            <td>{{customer.registration_date}}</td>
-            <td>{{customer.profile_picture}}</td>
-            <td>{{customer.nationality}}</td>
-            
-            {%endfor%}
+            <td>FirstName</td>
+            <td>LastName</td>
+            <td>Address</td>
+            <td>Email_address</td>
+            <td>Phone_number</td>
+            <td>Gender</td>
+            <td>Age</td>
+            <td>Id_number</td>
+            <td>Country</td>
+            <td>Account_type</td>
+            <td>Registration_date</td>
+            <td>Nationality</td>
+            <!-- <td style=" background-color:rgb(34, 166, 243); ">Profile_picture</td> -->
+        
+        {%for customer in customers%}
+        <tr>
+            <td style="color: white; background-color:black; ">{{customer.first_name}}</td>
+            <td style="color: white; background-color:black; ">{{customer.last_name}}</td>
+            <td style="color: white; background-color:black; ">{{customer.address}}</td>
+            <td style="color: white; background-color:black; ">{{customer.email_address}}</td>
+            <td style="color: white; background-color:black; ">{{customer.phone_number}}</td>
+            <td style="color: white; background-color:black; ">{{customer.gender}}</td>
+            <td style="color: white; background-color:black; ">{{customer.age}}</td>
+            <td style="color: white; background-color:black; ">{{customer.id_number}}</td>
+            <td style="color: white; background-color:black; ">{{customer.country}}</td>
+            <td style="color: white; background-color:black; ">{{customer.account_type}}</td>
+            <td style="color: white; background-color:black; ">{{customer.registration_date}}</td>
+            <td style="color: white; background-color:black; ">{{customer.nationality}}</td>
+            <!-- <td style=" background-color:rgb(10, 10, 88); ">{{customer.Profile_picture}}</td> -->
+
+        </tr>    
+        {%endfor%}
     </table>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
 
