@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import forms
 from . import models
 # from .forms import AccountRegistrationForm, CustomerRegistrationForm, CurrencyRegistrationForm, TransactionRegistrationForm, CardRegistrationForm,LoanRegistrationForm,NotificationRegistrationForm,ReceiptRegistrationForm,RewardRegistrationForm,ThirdpartyRegistrationForm,WalletRegistrationForm
@@ -15,6 +15,21 @@ def register_customer(request):
 def list_customers(request):
     customers=models.Customer.objects.all()
     return render(request,"wallet/customers_list.html",{"customers":customers})
+
+def customer_profile(request, id):  #connects to the path then to the url then the profile in the template
+    customerz=models.Customer.objects.get(id=id)
+    return render(request, "wallet/customer_profile.html",{"customerz":customerz})
+
+def edit_customer(request,id):
+    customer=models.Customer.objects.get(id=id)
+    if request.method=="POST":
+        form=forms.CustomerRegistrationForm(request.POST,instance=customer)
+
+        if form.is_valid():
+            return redirect("customer_profile",id=customer.id)
+    else:
+            form=forms.CustomerRegistrationForm(instance=customer)
+            return render(request,"wallet/edit_customer.html",{"form":form})
 
 
 
