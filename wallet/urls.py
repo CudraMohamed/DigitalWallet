@@ -28,6 +28,16 @@ urlpatterns=[
     path("rewards/",views.list_rewards,name="rewards_list"),
 
     path("customers/<int:id>/",views.customer_profile,name="customer_profile"),
+    path("accounts/<int:id>/",views.customer_account,name="customer_account"),
+    path("transactions/<int:id>/",views.customer_transaction,name="customer_transaction"),
+    path("cards/<int:id>/",views.customer_card,name="customer_card"),
+    path("receipts/<int:id>/",views.customer_receipt,name="customer_receipt"),
+    path("wallets/<int:id>/",views.customer_wallet,name="customer_wallet"),
 
     path("customers/edit/<int:id>/",views.edit_customer,name="edit_customer"),
+    path("accounts/edit/<int:id>/",views.edit_account,name="edit_account"),
+    path("transactions/edit/<int:id>/",views.edit_transaction,name="edit_transaction"),
+    path("cards/edit/<int:id>/",views.edit_card,name="edit_card"),
+    path("receipts/edit/<int:id>/",views.edit_receipt,name="edit_receipt"),
+    path("wallets/edit/<int:id>/",views.edit_wallet,name="edit_wallet"),
     ]
