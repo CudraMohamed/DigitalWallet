@@ -12,52 +12,52 @@ class CustomerRegistrationForm(forms.ModelForm):    #(ModelForm)-importing speci
         #     "profile_picture":forms.ClearableFileInput(attrs={'class':"form-control"}),
         # }
 
-class CurrencyRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class CurrencyRegistrationForm(forms.ModelForm):    
     class Meta:
         model=Currency
         fields="__all__"
 
-class AccountRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class AccountRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Account
         fields="__all__"
 
-class TransactionRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class TransactionRegistrationForm(forms.ModelForm):    
     class Meta:
         model=Transaction
         fields="__all__"
 
-class CardRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class CardRegistrationForm(forms.ModelForm):    
     class Meta:
         model=Card
         fields="__all__"
 
-class LoanRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class LoanRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Loan
         fields="__all__"
 
-class NotificationRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class NotificationRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Notification
         fields="__all__"
 
-class ReceiptRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class ReceiptRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Receipt
         fields="__all__"
 
-class ThirdpartyRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class ThirdpartyRegistrationForm(forms.ModelForm):   
     class Meta:
         model=ThirdParty
         fields="__all__"
 
-class WalletRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class WalletRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Wallet
         fields="__all__"
 
-class RewardRegistrationForm(forms.ModelForm):    #(ModelForm)-importing specific class
+class RewardRegistrationForm(forms.ModelForm):   
     class Meta:
         model=Reward
         fields="__all__"
