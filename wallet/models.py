@@ -32,6 +32,39 @@ class Account(models.Model):
     name = models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='Account_name')
     wallet=models.ForeignKey('Wallet',on_delete=models.CASCADE,related_name='Account_wallet')
 
+#deposit API to deposit funds to any accoun
+    def deposit(self, amount):
+       if amount <= 0:
+           message =  "Invalid amount"
+           status = 403
+       else:
+           self.account_balance += amount
+           self.save()
+           message = f"You have deposited {amount}, your new balance is {self.account_balance}"
+           status = 200
+       return message, status
+
+
+#transfer funds to another account to another.
+
+    def transfer(self, destination, amount):
+       if amount <= 0:
+           message =  "Invalid amount"
+           status = 403
+      
+       elif amount < self.account_balance:
+           message =  "Insufficient balance"
+           status = 403
+      
+       else:
+           self.account_balance -= amount
+           self.save()
+           destination.deposit(amount)
+          
+           message = f"You have transfered {amount}, your new balance is {self.account_balance}"
+           status = 200
+       return message, status
+
 class Transaction(models.Model):
     transaction_charges=models.IntegerField()
     # wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='Transaction_wallet')

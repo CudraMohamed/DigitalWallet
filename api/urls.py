@@ -14,4 +14,5 @@ router.register("notifications", NotificationViewSet)
 
 urlpatterns=[
     path("",include(router.urls)),
+    path("deposit/", AccountDepositView.as_view(), name="deposit-view"), #add a route to your view after importing it to your urls.
 ]
