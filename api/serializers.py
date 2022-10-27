@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from wallet.models import *
+from dataclasses import fields
+from pyexpat import model
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
